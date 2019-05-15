@@ -32,20 +32,7 @@ wsgi_app = app.wsgi_app
 @app.route('/')
 def hello():
    
-    filename = 'iris.csv'
-    names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
-    dataset = read_csv(filename, names=names)
-    array = dataset.values
-    X = array[:,0:4]
-    Y = array[:,4]
-    validation_size = 0.20
-    seed = 7
-    X_train, X_validation, Y_train, Y_validation = train_test_split(X, Y, test_size=validation_size, random_state=seed)
-    knn = KNeighborsClassifier()
-    knn.fit(X_train, Y_train)
-    # save the model to disk
-    filename = 'finalized_model.pkl'
-    dump(knn, filename)
+
     return "Hello World!"
 
 @app.route('/<a>,<b>,<c>,<d>', methods=['GET'])
